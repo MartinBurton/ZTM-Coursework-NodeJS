@@ -28,7 +28,7 @@ describe('Test POST /launches', () => {
     mission: 'USS Enterprise',
     rocket: 'NCC 1701',
     target: 'Keplar-186 f',
-    launchDate: 'Error Date'
+    launchDate: 'Zoot'
   };
 
   test('It should respond with 201 created', async () => {
