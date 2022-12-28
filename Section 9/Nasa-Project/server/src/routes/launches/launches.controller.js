@@ -5,10 +5,16 @@ const {
   abortLaunchById, 
 } = require('../../models/launches.model');
 
+// Seperation of concern function that allows the client
+// to recieve all launch data from the launches model
 function httpGetAllLaunches(req, res) {
   return res.status(200).json(getAllLaunches());
 };
 
+// Seperation of concern function that allows the client to add
+// a new launch object to the launches model
+// Validation checks for missing properties and invalid dates
+// before submitting the new launch to the model
 function httpAddNewLaunch(req, res) {
   const launch = req.body;
 
@@ -32,6 +38,10 @@ function httpAddNewLaunch(req, res) {
   return res.status(201).json(launch);
 }
 
+// Seperation of concern function that allows the client to abort
+// launches.
+// Validates that the launch id exists before submiting the request
+// to the model
 function httpAbortLaunch(req, res) {
   const launchId = Number(req.params.id);
   if (!existsLaunchWithId(launchId)) {
