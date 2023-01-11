@@ -27,18 +27,8 @@ app.get('/timer', (req, res) => {
   res.send(`Ding ding ding: ${process.pid}`);
 });
 
-// console.log('Running Server.js');
-if (cluster.isMaster) {
-  console.log('Master has been started...')
-  const NUM_WORKERS = os.cpus().length;
-  console.log(`Number of Workers: ${NUM_WORKERS}`);
-  for(let i=0; i < NUM_WORKERS; i++) {
-    cluster.fork();
-  };
-} else {
-  console.log('Worker Process started');
-  app.listen(PORT, () => {
-    console.log(`Worker is listening on ${PORT}`);
-  });
-}
+console.log('Worker Process started');
+app.listen(PORT, () => {
+  console.log(`Worker is listening on ${PORT}`);
+});
 
