@@ -2,6 +2,7 @@ const launches = new Map();
 
 let latestFlightNumber = 100;
 
+// Sample data used to populate app in testing.
 const launch = {
   flightNumber: 100,
   mission: 'Keplar Exploration X',
